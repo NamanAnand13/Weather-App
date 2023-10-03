@@ -1,5 +1,5 @@
 
-# Weather-App : Link (https://naman-weather-app.netlify.app/)
+# Weather-App
 
 ## Overview
 This is a simple and user-friendly weather application that provides real-time weather information for any location worldwide. With a clean and intuitive interface, users can quickly access current weather conditions and other relevant data.
