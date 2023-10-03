@@ -1,13 +1,18 @@
 const userTab = document.querySelector("[data-userWeather]");
 const searchTab = document.querySelector("[data-searchWeather]");
 const userContainer = document.querySelector(".weather-container");
-const grantAccessContainer = document.querySelector(".grant-loaction-container");
+const grantAccessContainer = document.querySelector(".grant-location-container");
 const searchForm = document.querySelector(".form-container");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfo = document.querySelector(".user-info-container");
 const grantAccessButton = document.querySelector("[data-grantAccess]");
+
 let searchInput = document.querySelector("[data-searchInput]");
 
+setBgImg();
+function setBgImg() {
+    document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?nature')";
+}
 let currTab = userTab;
 const API_key = "4d74f1fc3a859a0ea013efc003302c4b";
 getFromSessionStorage();
@@ -86,11 +91,16 @@ function renderWeatherInfo(weatherInfo) {
     countryIcon.src = `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     weatherDesc.innerText = weatherInfo?.weather?.[0]?.description;
     weatherIcon.src = `https://openweathermap.org/img/wn/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temperature.innerText = weatherInfo?.main?.temp;
-    windspeed.innerText = weatherInfo?.wind?.speed;
-    humidity.innerText = weatherInfo?.main?.humidity;
-    cloud.innerText = weatherInfo?.clouds?.all;
-
+    temperature.innerText = `${weatherInfo?.main?.temp} °C`;
+    windspeed.innerText = `${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText = `${weatherInfo?.main?.humidity} %`;
+    cloud.innerText = `${weatherInfo?.clouds?.all} %`;
+    try {
+        document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${weatherInfo?.name}')`;
+    }
+    catch (err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
 }
 
 function getLocation() {
@@ -143,6 +153,6 @@ async function fetchSearchWeatherInfo(city) {
         renderWeatherInfo(data);
     }
     catch (error) {
-        console.error("Error fetching search weather info:", error);
+        console.log(error);
     }
 }
