@@ -1,0 +1,7 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/namananand/Desktop/Naman/Proj/Weather-App/Weather-App/output/c'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003F54, symSize: 0x48 }
+  - { offsetInCU: 0x2C66, offset: 0x2C66, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003F54, symSize: 0x48 }
+...
