@@ -104,9 +104,12 @@ function renderWeatherInfo(weatherInfo) {
 }
 
 function getLocation() {
+    loadingScreen.classList.add("active");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
+    loadingScreen.classList.remove("active");
+
 }
 
 const options = {
